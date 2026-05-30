@@ -3,8 +3,22 @@ import { Moon, Sun } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(true); // Default to dark mode for premium look
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return true;
+  });
 
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e) => setIsDark(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  // Apply the theme to the document
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add('dark');
