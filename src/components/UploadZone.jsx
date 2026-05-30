@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { UploadCloud, File as FileIcon, Loader2 } from 'lucide-react';
 import clsx from 'clsx';
-import { PDFDocument, rgb, StandardFonts, PDFName } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts, PDFName, PDFDict, PDFArray } from 'pdf-lib';
 import { decryptPDF } from '@pdfsmaller/pdf-decrypt';
 import PasswordModal from './PasswordModal';
 
@@ -47,7 +47,7 @@ export default function UploadZone({ onVerify }) {
               const annotRef = annots.get(i);
               const annot = pdfDoc.context.lookup(annotRef);
               
-              if (annot && annot.constructor.name === 'PDFDict') {
+              if (annot && annot instanceof PDFDict) {
                 // Use lookup instead of get to automatically resolve indirect references (PDFRef)
                 const subtype = annot.lookup(PDFName.of('Subtype'));
                 
@@ -59,7 +59,7 @@ export default function UploadZone({ onVerify }) {
                   annot.delete(PDFName.of('AP'));
 
                   const rect = annot.lookup(PDFName.of('Rect'));
-                  if (rect && rect.constructor.name === 'PDFArray') {
+                  if (rect && rect instanceof PDFArray) {
                     // Use value() to extract the number from PDFNumber
                     const llx = rect.lookup(0).value();
                     const lly = rect.lookup(1).value();
