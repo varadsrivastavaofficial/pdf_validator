@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff6a00;
+  --color-primary-hover: #ff8533;
+  --color-primary-glow: rgba(255, 106, 0, 0.5);
+  --color-bg-dark: #0a0a0c;
+  --color-bg-light: #f8fafc;
+  --color-surface-dark: #121215;
+  --color-surface-light: #ffffff;
+  --color-text-dark: #f8fafc;
+  --color-text-light: #0f172a;
+}
+
+@layer utilities {
+  .glow-orange {
+    box-shadow: 0 0 15px var(--color-primary-glow);
+  }
+  .glow-orange-lg {
+    box-shadow: 0 0 25px var(--color-primary-glow), 0 0 50px rgba(255, 106, 0, 0.2);
+  }
+  .text-glow {
+    text-shadow: 0 0 10px var(--color-primary-glow);
+  }
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .glassmorphism-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
+
+body {
+  @apply bg-[var(--color-bg-light)] text-[var(--color-text-light)] dark:bg-[var(--color-bg-dark)] dark:text-[var(--color-text-dark)] transition-colors duration-500 min-h-screen antialiased;
+}
+
+/* Gradient mesh background elements */
+.bg-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  filter: blur(90px);
+  opacity: 0.4;
+  border-radius: 50%;
+  animation: float 20s infinite ease-in-out;
+}
+
+.dark .blob {
+  opacity: 0.15;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.blob-1 {
+  top: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+}
+
+.blob-2 {
+  bottom: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, #ff3d00 0%, transparent 70%);
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  top: 40%;
+  left: 40%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, #ff9100 0%, transparent 70%);
+  animation-delay: -10s;
+}
