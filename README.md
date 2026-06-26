@@ -1,16 +1,45 @@
-# React + Vite
+# PDF Verify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Verify PDF Authenticity Instantly. A futuristic, client-side, and offline PDF verification engine.
 
-Currently, two official plugins are available:
+## Overview
+PDF Verify is a modern web application built with React and Vite that allows you to analyze cryptographic signatures and file structures of PDF documents in milliseconds. It provides a bank-grade verification engine to protect your business from forged documents.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Key Features
+- **100% Client-Side Processing:** All PDF validation and decryption happens securely within your browser. 
+- **Privacy First:** No external APIs are used, and no files are uploaded to any server. Your data never leaves your device.
+- **Modern UI/UX:** Features a beautiful, interactive glassmorphism interface powered by Tailwind CSS and Framer Motion.
+- **Instant Analysis:** Analyzes file structures and cryptographic signatures at lightning speed.
 
-## React Compiler
+## Technologies Used
+- React 19
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- pdf-lib
+- @pdfsmaller/pdf-decrypt
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+Make sure you have Node.js installed on your machine.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Clone the repository and navigate to the project folder.
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## License
+MIT
